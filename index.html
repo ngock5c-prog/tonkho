@@ -2,169 +2,150 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Tra Cứu Tồn Kho – SATA & BOSI | Huachen VN</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f6f8;color:#222;font-size:13px}
 
-/* ===== HEADER ===== */
-.header{background:#1b4d1b;padding:14px 24px 12px}
-.header-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.logo-area{display:flex;align-items:center;gap:12px}
-.logo-hex{width:52px;height:52px;flex-shrink:0}
-.brand-text .b1{font-size:22px;font-weight:900;color:#f0c030;letter-spacing:1.5px;display:block;line-height:1}
-.brand-text .b2{font-size:11px;color:#90c890;letter-spacing:2px;text-transform:uppercase;display:block;margin-top:3px}
-.header-divider{width:1px;height:44px;background:rgba(255,255,255,.15);margin:0 4px}
-.header-title{flex:1}
-.header-title h1{font-size:17px;font-weight:700;color:#fff;line-height:1.2}
-.header-title p{font-size:11px;color:#7aba7a;margin-top:4px}
-.header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
-.update-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#c8e8c8;font-size:12px;padding:7px 16px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:.15s}
-.update-btn:hover{background:rgba(255,255,255,.15)}
-.update-btn svg{width:14px;height:14px;flex-shrink:0}
+.header{background:#1b4d1b;padding:12px 16px 10px}
+.header-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-area{display:flex;align-items:center;gap:10px}
+.logo-hex{width:48px;height:48px;flex-shrink:0}
+.brand-text .b1{font-size:20px;font-weight:900;color:#f0c030;letter-spacing:1px;display:block;line-height:1}
+.brand-text .b2{font-size:10px;color:#90c890;letter-spacing:2px;text-transform:uppercase;display:block;margin-top:3px}
+.header-divider{width:1px;height:40px;background:rgba(255,255,255,.15)}
+.header-title{flex:1;min-width:0}
+.header-title h1{font-size:15px;font-weight:700;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title p{font-size:11px;color:#7aba7a;margin-top:3px}
+.update-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#c8e8c8;font-size:11px;padding:7px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.update-btn:hover{background:rgba(255,255,255,.2)}
 
-/* ===== SUMMARY ROW ===== */
-.summary{background:#fff;border-bottom:2px solid #e8e8e8;padding:0}
-.summary-inner{max-width:1320px;margin:0 auto;display:flex;align-items:stretch}
-.sum-item{flex:1;padding:10px 0;text-align:center;border-right:1px solid #f0f0f0;min-width:80px}
+.summary{background:#fff;border-bottom:2px solid #e8e8e8}
+.summary-inner{max-width:1320px;margin:0 auto;display:flex;align-items:stretch;overflow-x:auto}
+.sum-item{flex:1;padding:8px 4px;text-align:center;border-right:1px solid #f0f0f0;min-width:70px}
 .sum-item:last-child{border-right:none}
-.sum-val{font-size:20px;font-weight:800;line-height:1}
-.sum-lbl{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-.sum-item.green .sum-val{color:#1b6a1b}
-.sum-item.blue .sum-val{color:#2a5a9a}
-.sum-item.orange .sum-val{color:#a04a10}
+.sum-val{font-size:17px;font-weight:800;line-height:1}
+.sum-lbl{font-size:9px;color:#aaa;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.sum-item.g .sum-val{color:#1b6a1b}
+.sum-item.b .sum-val{color:#2a5a9a}
+.sum-item.o .sum-val{color:#a04a10}
 .sum-item.gray .sum-val{color:#888}
 
-/* ===== SEARCH PANEL ===== */
-.search-panel{background:#fff;border-bottom:1px solid #e8e8e8;padding:10px 24px}
+.search-panel{background:#fff;border-bottom:1px solid #e8e8e8;padding:8px 16px}
 .search-panel-inner{max-width:1320px;margin:0 auto}
-.search-top{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
-.search-box{flex:1;min-width:260px;position:relative}
-.search-box input{width:100%;height:38px;padding:0 14px 0 38px;border:1.5px solid #d0e8d0;border-radius:7px;font-size:13px;outline:none;background:#fafffe;color:#222}
-.search-box input:focus{border-color:#1b6a1b;background:#fff;box-shadow:0 0 0 3px rgba(27,106,27,.08)}
-.search-box .sico{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#aaa;font-size:15px;pointer-events:none}
-.search-hint{font-size:11px;color:#bbb;background:#f8f8f8;border:1px solid #eee;border-radius:5px;padding:3px 10px;white-space:nowrap}
-.filter-bar{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
-.flbl{font-size:11px;color:#bbb;margin-right:1px}
-.chip{height:26px;padding:0 12px;border:1px solid #e0e0e0;border-radius:13px;font-size:11px;cursor:pointer;background:#fff;color:#666;transition:.12s;white-space:nowrap}
+.search-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.search-box{flex:1;position:relative}
+.search-box input{width:100%;height:36px;padding:0 12px 0 34px;border:1.5px solid #d0e8d0;border-radius:7px;font-size:13px;outline:none;background:#fafffe}
+.search-box input:focus{border-color:#1b6a1b;box-shadow:0 0 0 2px rgba(27,106,27,.08)}
+.search-box .sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#bbb;font-size:14px;pointer-events:none}
+.filter-bar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.flbl{font-size:11px;color:#bbb;margin-right:1px;white-space:nowrap}
+.chip{height:24px;padding:0 10px;border:1px solid #e0e0e0;border-radius:12px;font-size:11px;cursor:pointer;background:#fff;color:#666;white-space:nowrap}
 .chip:hover{border-color:#1b6a1b;color:#1b6a1b}
 .chip.on{background:#1b6a1b;color:#fff;border-color:#1b6a1b}
-.chip.on-b{background:#2a5a9a;color:#fff;border-color:#2a5a9a}
-.chip.on-o{background:#a04a10;color:#fff;border-color:#a04a10}
-.vsep{width:1px;height:16px;background:#e8e8e8;display:inline-block;margin:0 3px}
-.rcnt{margin-left:auto;font-size:11px;color:#bbb}
+.vsep{width:1px;height:14px;background:#e8e8e8;display:inline-block;margin:0 2px;flex-shrink:0}
+.rcnt{margin-left:auto;font-size:11px;color:#bbb;white-space:nowrap}
 
-/* ===== TABLE WRAPPER ===== */
-.content{max-width:1320px;margin:16px auto;padding:0 24px}
+.content{max-width:1320px;margin:12px auto;padding:0 16px}
 .tbl-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
-/* Table structure — matches the screenshot style */
 table{width:100%;border-collapse:collapse;table-layout:fixed}
-
-/* Column widths */
-col.c-stt{width:46px}
-col.c-ma{width:110px}
+col.c-stt{width:36px}
+col.c-ma{width:105px}
 col.c-ten{width:auto}
-col.c-dvt{width:80px}
-col.c-sl{width:72px}
-col.c-bd{width:100px}
-col.c-bn{width:100px}
-col.c-tot{width:90px}
-col.c-note{width:110px}
+col.c-dvt{width:48px}
+col.c-sl{width:52px}
+col.c-bd{width:88px}
+col.c-bn{width:88px}
+col.c-tot{width:80px}
+col.c-note{width:80px}
 
-/* Header rows */
-.thead-logo-row td{background:#1b4d1b;padding:0;height:0;overflow:hidden;border:none}
-.thead-title-row td{background:#2a6e2a;color:#fff;text-align:center;font-weight:700;font-size:13px;padding:9px 8px;border:1px solid #3a8a3a;vertical-align:middle}
-.thead-sub-row td{background:#4a8a4a;color:#fff;text-align:center;font-size:11px;padding:5px 6px;border:1px solid #5aaa5a;font-style:italic;vertical-align:middle}
+thead th{background:#2a6e2a;color:#fff;padding:8px 8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;position:sticky;top:0;z-index:10}
+thead th.hd2{background:#3a7a3a;font-size:9px;font-weight:400;font-style:italic;padding:4px 8px}
+thead th.bd-hd{background:#3a7a9a}
+thead th.bd-hd2{background:#4a8aaa;font-size:9px;font-style:italic;padding:4px 8px}
+thead th.bn-hd{background:#2a5a8a}
+thead th.bn-hd2{background:#3a6a9a;font-size:9px;font-style:italic;padding:4px 8px}
+thead th.tot-hd{background:#1a4a1a}
+th.c,td.c{text-align:center}
 
-/* Left-align name column */
-.thead-title-row td.al{text-align:left;padding-left:10px}
-.thead-sub-row td.al{text-align:left;padding-left:10px}
+.total-row td{background:#e8f0e8;color:#1b4d1b;font-weight:700;font-size:11px;text-align:center;padding:6px 8px;border-bottom:2px solid #c8dcc8}
+.total-row td.al{text-align:left;padding-left:8px}
 
-/* Total row */
-.total-row td{background:#e8f0e8;color:#1b4d1b;font-weight:700;font-size:12px;text-align:center;padding:7px 8px;border:1px solid #c8dcc8}
-.total-row td.al{text-align:left;padding-left:10px}
+tbody tr{border-bottom:1px solid #f2f2f2}
+tbody tr:hover{background:#f4fbf4}
+tbody tr:last-child{border-bottom:none}
+td{padding:7px 8px;vertical-align:middle;border-right:1px solid #f5f5f5}
+td:last-child{border-right:none}
 
-/* Data rows */
-tbody tr.data-row{border-bottom:1px solid #eef2ee}
-tbody tr.data-row:hover{background:#f4fbf4}
-tbody tr.data-row td{padding:7px 8px;vertical-align:middle;border-right:1px solid #f0f0f0}
-tbody tr.data-row td:last-child{border-right:none}
-
-.cell-stt{text-align:center;color:#888;font-size:12px}
-.cell-ma{font-family:monospace;font-size:11px;font-weight:700;color:#1b4d1b;white-space:nowrap}
-.cell-ten{color:#333;line-height:1.4;font-size:12px;word-break:break-word}
-.cell-dvt{text-align:center;color:#888;font-size:12px}
-.cell-sl{text-align:center;color:#555;font-size:12px}
-.cell-num{text-align:center;font-size:13px;font-weight:700}
-.cell-num.bn{color:#2a5a9a}
-.cell-num.bd{color:#a04a10}
-.cell-num.tot{color:#1b4d1b}
-.cell-num.zero{color:#ccc;font-weight:400}
-.cell-note{text-align:center;font-size:11px;color:#aaa}
-
-/* Brand badge inline */
-.bbadge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;vertical-align:middle;margin-left:4px}
+.ma-tag{font-family:monospace;font-size:11px;font-weight:700;color:#1b4d1b;white-space:nowrap}
+.name{color:#333;line-height:1.4;word-break:break-word;font-size:12px}
+.bbadge{font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
 .bbadge.s{background:#e8f5e8;color:#1a5a1a;border:1px solid #b8d8b8}
 .bbadge.b{background:#e8f0fc;color:#1a3a7a;border:1px solid #b8cce8}
+.dvt{text-align:center;color:#888;font-size:11px}
+.num{text-align:center;font-size:13px;font-weight:700}
+.num.bn{color:#2a5a9a}
+.num.bd{color:#a04a10}
+.num.tot{color:#1b4d1b}
+.num.zero{color:#ddd;font-weight:400;font-size:11px}
+.hl{background:#fff9c4;border-radius:2px;padding:0 1px}
+.no-data{text-align:center;padding:40px;color:#ccc;font-size:13px}
 
-.hl{background:#fffde0;border-radius:2px;padding:0 1px}
-.no-data{text-align:center;padding:50px;color:#ccc;font-size:13px}
-
-/* ===== PAGER ===== */
-.pager{display:flex;align-items:center;justify-content:center;gap:4px;padding:12px;border-top:1px solid #f0f0f0}
-.pg{min-width:28px;height:28px;padding:0 6px;border:1px solid #e0e0e0;border-radius:5px;background:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;color:#555;transition:.1s}
+.pager{display:flex;align-items:center;justify-content:center;gap:4px;padding:10px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+.pg{min-width:28px;height:28px;padding:0 6px;border:1px solid #e0e0e0;border-radius:5px;background:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;color:#555}
 .pg:hover{border-color:#1b6a1b;color:#1b6a1b}
 .pg.on{background:#1b6a1b;color:#fff;border-color:#1b6a1b;font-weight:700}
-.pi{font-size:11px;color:#bbb;margin:0 6px}
+.pi{font-size:11px;color:#bbb;margin:0 4px}
 
-/* ===== UPLOAD MODAL ===== */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:300;align-items:center;justify-content:center;padding:20px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300;align-items:flex-end;justify-content:center;padding:0}
 .overlay.open{display:flex}
-.modal{background:#fff;border-radius:10px;width:100%;max-width:460px;box-shadow:0 8px 32px rgba(0,0,0,.18)}
-.mhd{padding:16px 20px;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center}
+.modal{background:#fff;border-radius:14px 14px 0 0;width:100%;max-width:500px;padding:20px 20px 32px;box-shadow:0 -4px 24px rgba(0,0,0,.15)}
+.mhd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .mhd h3{font-size:14px;font-weight:700}
-.mclose{width:26px;height:26px;border:none;background:#f0f0f0;border-radius:5px;cursor:pointer;font-size:14px}
-.mbody{padding:16px 20px 20px}
-.mbody p{font-size:12px;color:#777;line-height:1.65;margin-bottom:12px}
-.dz{border:1.5px dashed #b8d8b8;border-radius:8px;padding:28px;text-align:center;cursor:pointer;background:#fafffe}
+.mclose{width:26px;height:26px;border:none;background:#f0f0f0;border-radius:5px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#666}
+.mbody p{font-size:12px;color:#777;line-height:1.6;margin-bottom:12px}
+.dz{border:1.5px dashed #b8d8b8;border-radius:8px;padding:24px;text-align:center;cursor:pointer;background:#fafffe}
 .dz:hover,.dz.drag{background:#f0f8f0;border-color:#1b6a1b}
 .dz input{display:none}
-.dz-ico{font-size:28px;margin-bottom:6px}
+.dz-ico{font-size:26px;margin-bottom:6px}
 .dz-txt{font-size:12px;color:#777}
 .dz-hint{font-size:10px;color:#bbb;margin-top:3px}
 .mprog{height:3px;background:#eee;border-radius:2px;margin-top:10px;overflow:hidden;display:none}
 .mprogbar{height:100%;background:#1b6a1b;transition:width .3s}
-.mstatus{font-size:11px;margin-top:7px;min-height:14px}
+.mstatus{font-size:11px;margin-top:7px;min-height:14px;line-height:1.5}
 .mfooter{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
-.btn-c{padding:7px 18px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:12px}
-.btn-ok{padding:7px 18px;border:none;border-radius:6px;background:#1b6a1b;color:#fff;cursor:pointer;font-size:12px;font-weight:600}
+.btn-c{padding:8px 18px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:12px}
+.btn-ok{padding:8px 18px;border:none;border-radius:6px;background:#1b6a1b;color:#fff;cursor:pointer;font-size:12px;font-weight:600}
 .btn-ok:disabled{background:#bbb;cursor:not-allowed}
 
 footer{text-align:center;padding:14px;font-size:11px;color:#bbb}
 
-@media(max-width:768px){
-  .header-inner{gap:10px}
-  .brand-text .b1{font-size:18px}
+@media(max-width:600px){
+  .header-divider{display:none}
+  .header-title h1{font-size:13px}
   col.c-sl{width:0;display:none}
   col.c-note{width:0;display:none}
-  .content,.search-panel{padding:0 10px}
-  .content{padding:10px}
+  .logo-hex{width:38px;height:38px}
+  .brand-text .b1{font-size:16px}
+  thead th.hd2,thead th.bd-hd2,thead th.bn-hd2{display:none}
+  td:nth-child(5){display:none}
+  td:nth-child(9){display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-inner">
     <div class="logo-area">
-      <svg class="logo-hex" viewBox="0 0 52 52">
-        <polygon points="26,2 49,14 49,38 26,50 3,38 3,14" fill="#f0c030" stroke="#c8a020" stroke-width="1.5"/>
-        <polygon points="26,7 44,17 44,35 26,45 8,35 8,17" fill="#1b4d1b"/>
-        <text x="26" y="28" text-anchor="middle" font-size="9" font-weight="900" fill="#f0c030" font-family="Arial">SATA</text>
-        <text x="26" y="38" text-anchor="middle" font-size="5" font-weight="700" fill="#90c890" font-family="Arial">TOOLS</text>
+      <svg class="logo-hex" viewBox="0 0 48 48">
+        <polygon points="24,2 45,13 45,35 24,46 3,35 3,13" fill="#f0c030" stroke="#c8a020" stroke-width="1.5"/>
+        <polygon points="24,7 41,17 41,31 24,41 7,31 7,17" fill="#1b4d1b"/>
+        <text x="24" y="26" text-anchor="middle" font-size="8.5" font-weight="900" fill="#f0c030" font-family="Arial">SATA</text>
+        <text x="24" y="35" text-anchor="middle" font-size="4.5" font-weight="700" fill="#90c890" font-family="Arial">TOOLS</text>
       </svg>
       <div class="brand-text">
         <span class="b1">HUACHEN VN</span>
@@ -174,38 +155,32 @@ footer{text-align:center;padding:14px;font-size:11px;color:#bbb}
     <div class="header-divider"></div>
     <div class="header-title">
       <h1>TRA CỨU TỒN KHO – SATA &amp; BOSI</h1>
-      <p id="updateLabel">Dữ liệu: đang tải...</p>
+      <p id="updateLabel">Đang tải...</p>
     </div>
-    <div class="header-right">
-      <button class="update-btn" onclick="document.getElementById('upModal').classList.add('open')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7a5 5 0 1 0 5-5V1L4 3.5 7 6V4a3 3 0 1 1-3 3H2z"/></svg>
-        Cập nhật dữ liệu
-      </button>
-    </div>
+    <button class="update-btn" onclick="document.getElementById('upModal').classList.add('open')">
+      &#8635; Cập nhật
+    </button>
   </div>
 </div>
 
-<!-- SUMMARY -->
 <div class="summary">
   <div class="summary-inner">
-    <div class="sum-item green"><div class="sum-val" id="sTot">–</div><div class="sum-lbl">Tổng mã hàng</div></div>
-    <div class="sum-item green"><div class="sum-val" id="sSata">–</div><div class="sum-lbl">SATA</div></div>
-    <div class="sum-item blue"><div class="sum-val" id="sBosi">–</div><div class="sum-lbl">BOSI</div></div>
-    <div class="sum-item blue"><div class="sum-val" id="sBN">–</div><div class="sum-lbl">Kho Bắc Ninh</div></div>
-    <div class="sum-item orange"><div class="sum-val" id="sBD">–</div><div class="sum-lbl">Kho Bình Dương</div></div>
-    <div class="sum-item gray"><div class="sum-val" id="sFound">–</div><div class="sum-lbl">Kết quả tìm</div></div>
+    <div class="sum-item g"><div class="sum-val" id="sTot">–</div><div class="sum-lbl">Tổng mã</div></div>
+    <div class="sum-item g"><div class="sum-val" id="sSata">–</div><div class="sum-lbl">SATA</div></div>
+    <div class="sum-item b"><div class="sum-val" id="sBosi">–</div><div class="sum-lbl">BOSI</div></div>
+    <div class="sum-item b"><div class="sum-val" id="sBN">–</div><div class="sum-lbl">Kho BN</div></div>
+    <div class="sum-item o"><div class="sum-val" id="sBD">–</div><div class="sum-lbl">Kho BD</div></div>
+    <div class="sum-item gray"><div class="sum-val" id="sFound">–</div><div class="sum-lbl">Kết quả</div></div>
   </div>
 </div>
 
-<!-- SEARCH PANEL -->
 <div class="search-panel">
   <div class="search-panel-inner">
-    <div class="search-top">
+    <div class="search-row">
       <div class="search-box">
         <span class="sico">&#128269;</span>
-        <input type="text" id="q" placeholder="Nhập mã hàng hoặc tên sản phẩm... Nhiều mã: SC43207, BS120558A" oninput="go()">
+        <input type="text" id="q" placeholder="Tìm mã hàng hoặc tên... Nhiều mã: SC43207, BS120558A" oninput="go()">
       </div>
-      <span class="search-hint">Phân cách bằng dấu phẩy</span>
     </div>
     <div class="filter-bar">
       <span class="flbl">Hãng:</span>
@@ -214,7 +189,7 @@ footer{text-align:center;padding:14px;font-size:11px;color:#bbb}
       <button class="chip" data-g="brand" data-v="BOSI" onclick="sf(this)">BOSI</button>
       <span class="vsep"></span>
       <span class="flbl">Kho:</span>
-      <button class="chip on" data-g="kho" data-v="all" onclick="sf(this)">Cả 2 kho</button>
+      <button class="chip on" data-g="kho" data-v="all" onclick="sf(this)">Cả 2</button>
       <button class="chip" data-g="kho" data-v="BN" onclick="sf(this)">Bắc Ninh</button>
       <button class="chip" data-g="kho" data-v="BD" onclick="sf(this)">Bình Dương</button>
       <span class="vsep"></span>
@@ -224,40 +199,37 @@ footer{text-align:center;padding:14px;font-size:11px;color:#bbb}
   </div>
 </div>
 
-<!-- TABLE -->
 <div class="content">
 <div class="tbl-card">
-<div style="overflow-x:auto">
+<div class="tbl-wrap">
 <table>
   <colgroup>
     <col class="c-stt"><col class="c-ma"><col class="c-ten"><col class="c-dvt">
     <col class="c-sl"><col class="c-bd"><col class="c-bn"><col class="c-tot"><col class="c-note">
   </colgroup>
   <thead>
-    <!-- Title header row -->
-    <tr class="thead-title-row">
-      <td rowspan="2" style="text-align:center">STT</td>
-      <td rowspan="2" style="text-align:center">MÃ HÀNG</td>
-      <td rowspan="2" class="al">TÊN TIẾNG VIỆT XUẤT HÓA ĐƠN</td>
-      <td rowspan="2" style="text-align:center">ĐVT</td>
-      <td rowspan="2" style="text-align:center">SỐ LƯỢNG</td>
-      <td style="text-align:center;background:#3a7a9a;border-color:#4a9aba">BÌNH DƯƠNG<br><small style="font-weight:400;font-size:10px">Tồn kho</small></td>
-      <td style="text-align:center;background:#2a5a8a;border-color:#3a7aaa">BẮC NINH<br><small style="font-weight:400;font-size:10px">Tồn kho</small></td>
-      <td rowspan="2" style="text-align:center;background:#1a4a1a;border-color:#2a6a2a">TỒN KHO<br><small style="font-weight:400;font-size:10px">Tổng</small></td>
-      <td rowspan="2" style="text-align:center">GHI CHÚ</td>
+    <tr>
+      <th rowspan="2" class="c">STT</th>
+      <th rowspan="2" class="c">MÃ HÀNG</th>
+      <th rowspan="2">TÊN HÀNG HÓA</th>
+      <th rowspan="2" class="c">ĐVT</th>
+      <th rowspan="2" class="c">SL</th>
+      <th class="c bd-hd">BÌNH DƯƠNG</th>
+      <th class="c bn-hd">BẮC NINH</th>
+      <th rowspan="2" class="c tot-hd">TỒN KHO<br><small style="font-weight:400;font-size:9px">Tổng</small></th>
+      <th rowspan="2" class="c">GHI CHÚ</th>
     </tr>
-    <tr class="thead-sub-row">
-      <td style="background:#4a8aaa;border-color:#5aaaca;font-size:10px">Thuận An, Bình Dương</td>
-      <td style="background:#3a6a9a;border-color:#4a8aba;font-size:10px">Yên Phong, Bắc Ninh</td>
+    <tr>
+      <th class="c bd-hd2">Thuận An, BD</th>
+      <th class="c bn-hd2">Yên Phong, BN</th>
     </tr>
-    <!-- Total row -->
-    <tr class="total-row" id="totalRow">
-      <td colspan="2" class="al" style="font-size:12px">Tổng cộng:</td>
-      <td class="al" id="totName" style="font-size:11px;color:#666"></td>
+    <tr class="total-row">
+      <td colspan="2" class="al">Tổng cộng:</td>
+      <td class="al" id="totName" style="font-size:10px;color:#666"></td>
       <td></td><td></td>
-      <td id="totBD" style="text-align:center;color:#a04a10">–</td>
-      <td id="totBN" style="text-align:center;color:#2a5a9a">–</td>
-      <td id="totAll" style="text-align:center;color:#1b4d1b">–</td>
+      <td id="totBD" style="color:#a04a10;text-align:center">–</td>
+      <td id="totBN" style="color:#2a5a9a;text-align:center">–</td>
+      <td id="totAll" style="color:#1b4d1b;text-align:center">–</td>
       <td></td>
     </tr>
   </thead>
@@ -268,19 +240,18 @@ footer{text-align:center;padding:14px;font-size:11px;color:#bbb}
 </div>
 </div>
 
-<footer>Huachen VN Co.,Ltd &nbsp;·&nbsp; Nhà phân phối chính thức SATA &amp; BOSI tại Việt Nam &nbsp;·&nbsp; Dữ liệu cập nhật hàng ngày</footer>
+<footer>Huachen VN Co.,Ltd &nbsp;·&nbsp; Nhà phân phối chính thức SATA &amp; BOSI tại Việt Nam</footer>
 
-<!-- UPLOAD MODAL -->
 <div class="overlay" id="upModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <div class="mhd"><h3>Cập nhật dữ liệu tồn kho</h3><button class="mclose" onclick="document.getElementById('upModal').classList.remove('open')">&#215;</button></div>
+    <div class="mhd"><h3>&#8635; Cập nhật dữ liệu tồn kho</h3><button class="mclose" onclick="document.getElementById('upModal').classList.remove('open')">&#215;</button></div>
     <div class="mbody">
-      <p>Xuất file <strong>现存量查询.xlsx</strong> từ hệ thống mỗi ngày → tải lên bên dưới. Trang sẽ cập nhật ngay lập tức.</p>
+      <p>Xuất file <strong>现存量查询.xlsx</strong> từ hệ thống → tải lên bên dưới.<br><strong>Tên file gì cũng được.</strong></p>
       <div class="dz" id="dz" onclick="document.getElementById('fi').click()" ondragover="dov(event)" ondragleave="dol()" ondrop="ddr(event)">
         <input type="file" id="fi" accept=".xlsx,.xls" onchange="fsel(event)">
         <div class="dz-ico">&#128196;</div>
         <div class="dz-txt" id="dztxt">Kéo thả hoặc nhấn để chọn file</div>
-        <div class="dz-hint">.xlsx / .xls &nbsp;·&nbsp; Xuất từ hệ thống 现存量查询</div>
+        <div class="dz-hint">Tên file gì cũng được · .xlsx / .xls</div>
       </div>
       <div class="mprog" id="mprog"><div class="mprogbar" id="mprogbar" style="width:0%"></div></div>
       <div class="mstatus" id="mstatus"></div>
@@ -314,18 +285,15 @@ function initStats(){
 
 function sf(btn){
   const g=btn.dataset.g;
-  document.querySelectorAll('[data-g="'+g+'"]').forEach(b=>b.classList.remove('on','on-b','on-o'));
+  document.querySelectorAll('[data-g="'+g+'"]').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  F[g]=btn.dataset.v;
-  pg=1;go();
+  F[g]=btn.dataset.v;pg=1;go();
 }
-
 function cSort(){
   srt=(srt+1)%3;
   document.getElementById('srtBtn').textContent=['⇅ Mặc định','⬇ Tổng cao→thấp','⬆ Tổng thấp→cao'][srt];
   go();
 }
-
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function hl(s,ts){
   if(!ts.length)return esc(s);
@@ -333,12 +301,10 @@ function hl(s,ts){
   ts.forEach(t=>{const re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');o=o.replace(re,'<span class="hl">$1</span>');});
   return o;
 }
-
-function numCell(v,cls){
-  if(!v||v===0)return '<span class="cell-num zero">0</span>';
-  return '<span class="cell-num '+cls+'">'+v.toLocaleString()+'</span>';
+function nc(v,cls){
+  if(!v||v===0)return '<span class="num zero">–</span>';
+  return '<span class="num '+cls+'">'+v.toLocaleString()+'</span>';
 }
-
 function go(){
   const raw=document.getElementById('q').value.trim();
   const ts=raw?raw.split(',').map(s=>s.trim().toLowerCase()).filter(Boolean):[];
@@ -351,40 +317,34 @@ function go(){
   if(srt===1) r=[...r].sort((a,b)=>b.total-a.total);
   else if(srt===2) r=[...r].sort((a,b)=>a.total-b.total);
   filt=r;
-  const totBD=r.reduce((s,d)=>s+d.bd,0);
-  const totBN=r.reduce((s,d)=>s+d.bn,0);
-  const totAll=r.reduce((s,d)=>s+d.total,0);
+  const tBD=r.reduce((s,d)=>s+d.bd,0),tBN=r.reduce((s,d)=>s+d.bn,0),tAll=r.reduce((s,d)=>s+d.total,0);
   document.getElementById('sFound').textContent=r.length.toLocaleString();
-  document.getElementById('rCount').textContent=r.length.toLocaleString()+' sản phẩm';
-  document.getElementById('totName').textContent=r.length.toLocaleString()+' mã hàng';
-  document.getElementById('totBD').textContent=totBD.toLocaleString();
-  document.getElementById('totBN').textContent=totBN.toLocaleString();
-  document.getElementById('totAll').textContent=totAll.toLocaleString();
+  document.getElementById('rCount').textContent=r.length.toLocaleString()+' sp';
+  document.getElementById('totName').textContent=r.length.toLocaleString()+' mã';
+  document.getElementById('totBD').textContent=tBD.toLocaleString();
+  document.getElementById('totBN').textContent=tBN.toLocaleString();
+  document.getElementById('totAll').textContent=tAll.toLocaleString();
   render(ts);pager();
 }
-
 function render(ts){
   const s=(pg-1)*PS,sl=filt.slice(s,s+PS);
   const tb=document.getElementById('tbody');
-  if(!filt.length){tb.innerHTML='<tr><td colspan="9" class="no-data">Không tìm thấy sản phẩm nào phù hợp</td></tr>';return;}
-  const br=brand;
+  if(!filt.length){tb.innerHTML='<tr><td colspan="9" class="no-data">Không tìm thấy sản phẩm nào</td></tr>';return;}
   tb.innerHTML=sl.map((d,i)=>{
-    const b=br(d.ma);
-    const bc=b==='SATA'?'s':'b';
-    return `<tr class="data-row">
-<td class="cell-stt">${s+i+1}</td>
-<td class="cell-ma">${hl(d.ma,ts)}</td>
-<td class="cell-ten">${hl(d.ten,ts)}<span class="bbadge ${bc}">${b}</span></td>
-<td class="cell-dvt">${esc(d.dvt)}</td>
-<td class="cell-sl">${(d.bn+d.bd)||'–'}</td>
-<td>${numCell(d.bd,'bd')}</td>
-<td>${numCell(d.bn,'bn')}</td>
-<td>${numCell(d.total,'tot')}</td>
-<td class="cell-note"></td>
+    const br=brand(d.ma),bc=br==='SATA'?'s':'b';
+    return `<tr>
+<td class="c" style="color:#ddd;font-size:10px">${s+i+1}</td>
+<td><span class="ma-tag">${hl(d.ma,ts)}</span></td>
+<td class="name">${hl(d.ten,ts)}<span class="bbadge ${bc}">${br}</span></td>
+<td class="dvt">${esc(d.dvt)}</td>
+<td class="c" style="color:#aaa;font-size:11px">${(d.bn+d.bd)||'–'}</td>
+<td>${nc(d.bd,'bd')}</td>
+<td>${nc(d.bn,'bn')}</td>
+<td>${nc(d.total,'tot')}</td>
+<td></td>
 </tr>`;
   }).join('');
 }
-
 function pager(){
   const tot=Math.ceil(filt.length/PS);
   const el=document.getElementById('pager');
@@ -407,43 +367,75 @@ function prep(f){selFile=f;document.getElementById('dztxt').textContent='✓ '+f
 function loadFile(){
   if(!selFile)return;
   const prog=document.getElementById('mprog'),bar=document.getElementById('mprogbar'),msg=document.getElementById('mstatus');
-  prog.style.display='block';bar.style.width='15%';msg.textContent='Đang đọc file...';msg.style.color='#888';
+  prog.style.display='block';bar.style.width='10%';msg.textContent='Đang đọc file...';msg.style.color='#888';
   const reader=new FileReader();
   reader.onload=function(e){
     try{
-      bar.style.width='50%';msg.textContent='Đang xử lý...';
+      bar.style.width='40%';msg.textContent='Đang phân tích...';
       const wb=XLSX.read(e.target.result,{type:'array'});
       const ws=wb.Sheets[wb.SheetNames[0]];
       const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+      bar.style.width='60%';
+
+      // Tìm dòng đầu tiên chứa tên kho BN hoặc BD
       let startRow=-1;
+      const KHO_KEYS=['KHO BN','KHO BD','北宁仓库','顺安仓库','北宁','顺安'];
       for(let i=0;i<rows.length;i++){
-        const v=String(rows[i][1]||'');
-        if(v.includes('BN')||v.includes('BD')||v.includes('北宁')||v.includes('顺安')){startRow=i;break;}
+        const rowStr=rows[i].slice(0,5).join('|');
+        if(KHO_KEYS.some(k=>rowStr.includes(k))){startRow=i;break;}
       }
-      if(startRow<0){msg.style.color='red';msg.textContent='Lỗi: Không tìm thấy dữ liệu kho. Kiểm tra lại file.';return;}
+      if(startRow<0){
+        msg.style.color='red';
+        msg.textContent='Không tìm thấy dữ liệu kho BN/BD trong file. Hãy kiểm tra lại file xuất từ hệ thống 现存量查询.';
+        return;
+      }
+
+      bar.style.width='75%';
       const tmp={};
+      let curKho='BN';
+
       for(let i=startRow;i<rows.length;i++){
         const r=rows[i];
-        const kr=String(r[1]||'');
+        const c1=String(r[1]||'').trim();
+
+        // Nhận diện dòng tên kho để cập nhật kho hiện tại
+        if(c1.includes('北宁')||c1.includes('KHO BN')){curKho='BN';continue;}
+        if(c1.includes('顺安')||c1.includes('KHO BD')){curKho='BD';continue;}
+        if(c1.includes('合计')||c1.includes('制表')){continue;}
+
         const ma=String(r[2]||'').trim();
-        if(!ma||ma.length<4||!ma.match(/^(SC|BS|BC|ST)/i))continue;
+        if(!ma||ma.length<3)continue;
+
         const ten=String(r[3]||'').trim();
         const dvt=String(r[6]||'').trim();
-        const ton=parseFloat(String(r[9]||0).replace(/,/g,''))||0;
-        const kd=parseFloat(String(r[10]||0).replace(/,/g,''))||0;
-        const kho=(kr.includes('BN')||kr.includes('北宁'))?'BN':'BD';
+
+        // Tìm cột tồn kho: cột 9 là 现存量
+        const ton=parseFloat(String(r[9]||0).replace(/[,，\s]/g,''))||0;
+        const kd=parseFloat(String(r[10]||0).replace(/[,，\s]/g,''))||0;
+
         if(!tmp[ma])tmp[ma]={ma,ten,dvt,bn:0,bd:0,bn_kd:0,bd_kd:0};
-        if(kho==='BN'){tmp[ma].bn=Math.round(ton);tmp[ma].bn_kd=Math.round(kd);}
+        if(curKho==='BN'){tmp[ma].bn=Math.round(ton);tmp[ma].bn_kd=Math.round(kd);}
         else{tmp[ma].bd=Math.round(ton);tmp[ma].bd_kd=Math.round(kd);}
       }
-      const nd=Object.values(tmp).map(p=>({...p,total:p.bn+p.bd}));
-      if(nd.length<10){msg.style.color='red';msg.textContent='Lỗi: Chỉ đọc được '+nd.length+' dòng.';return;}
+
+      const nd=Object.values(tmp).map(p=>({...p,total:p.bn+p.bd})).filter(p=>p.total>0);
       bar.style.width='100%';
+
+      if(nd.length<5){
+        msg.style.color='red';
+        msg.textContent='Chỉ đọc được '+nd.length+' dòng. Kiểm tra lại file — cần xuất từ báo cáo 现存量查询.';
+        return;
+      }
+
       DATA=nd;
       initStats();pg=1;go();
-      msg.style.color='green';msg.textContent='✓ Đã nạp '+nd.length.toLocaleString()+' sản phẩm!';
-      setTimeout(()=>document.getElementById('upModal').classList.remove('open'),1800);
-    }catch(err){msg.style.color='red';msg.textContent='Lỗi: '+err.message;}
+      msg.style.color='#1b6a1b';
+      msg.textContent='✓ Đã nạp '+nd.length.toLocaleString()+' sản phẩm thành công!';
+      setTimeout(()=>document.getElementById('upModal').classList.remove('open'),2000);
+    }catch(err){
+      msg.style.color='red';
+      msg.textContent='Lỗi đọc file: '+err.message;
+    }
   };
   reader.readAsArrayBuffer(selFile);
 }
