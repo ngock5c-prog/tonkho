@@ -466,7 +466,68 @@ function loadFile(){
   reader.readAsArrayBuffer(selFile);
 }
 
-initStats();go();
+// ========== TỰ ĐỘNG TẢI DATA TỪ GITHUB ==========
+const GITHUB_DATA_URL = 'https://raw.githubusercontent.com/ngock5c-prog/tonkho/main/data.xlsx';
+
+function parseExcelBuffer(buf) {
+  const wb = XLSX.read(buf, {type:'array'});
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+  let startRow = -1;
+  const KEYS = ['KHO BN','KHO BD','北宁仓库','顺安仓库'];
+  for (let i = 0; i < rows.length; i++) {
+    if (rows[i].slice(0,5).join('|').search(KEYS.join('|')) >= 0) { startRow = i; break; }
+  }
+  if (startRow < 0) return null;
+  const tmp = {}; let curKho = 'BN';
+  for (let i = startRow; i < rows.length; i++) {
+    const r = rows[i];
+    const c1 = String(r[1]||'').trim();
+    if (c1.includes('北宁')||c1.includes('KHO BN')) { curKho='BN'; continue; }
+    if (c1.includes('顺安')||c1.includes('KHO BD')) { curKho='BD'; continue; }
+    if (c1.includes('合计')||c1.includes('制表')) continue;
+    const ma = String(r[2]||'').trim();
+    if (!ma || ma.length < 3) continue;
+    const ten = String(r[3]||'').trim();
+    const dvt = String(r[6]||'').trim();
+    const ton = parseFloat(String(r[9]||0).replace(/[,，\s]/g,''))||0;
+    const kd  = parseFloat(String(r[10]||0).replace(/[,，\s]/g,''))||0;
+    if (!tmp[ma]) tmp[ma] = {ma,ten,dvt,bn:0,bd:0,bn_kd:0,bd_kd:0};
+    if (curKho==='BN') { tmp[ma].bn=Math.round(ton); tmp[ma].bn_kd=Math.round(kd); }
+    else               { tmp[ma].bd=Math.round(ton); tmp[ma].bd_kd=Math.round(kd); }
+  }
+  return Object.values(tmp).map(p=>({...p,total:p.bn+p.bd})).filter(p=>p.total>0);
+}
+
+function showAutoStatus(msg, color) {
+  document.getElementById('updLbl').textContent = msg;
+  document.getElementById('updLbl').style.color = color || '#7aba7a';
+}
+
+async function autoLoadFromGitHub() {
+  showAutoStatus('⏳ Đang tải dữ liệu...', '#f0c030');
+  try {
+    const res = await fetch(GITHUB_DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const buf = await res.arrayBuffer();
+    const nd = parseExcelBuffer(buf);
+    if (!nd || nd.length < 5) throw new Error('Dữ liệu không hợp lệ');
+    DATA = nd;
+    initStats();
+    pg = 1;
+    go();
+    const now = new Date();
+    showAutoStatus('✓ Cập nhật: ' + now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}), '#7aba7a');
+  } catch(err) {
+    // Nếu không tải được GitHub thì dùng data mặc định trong file
+    initStats();
+    pg = 1;
+    go();
+    showAutoStatus('⚠ Dùng data offline (lỗi: ' + err.message + ')', '#f0a050');
+  }
+}
+
+autoLoadFromGitHub();
 </script>
 </body>
 </html>
