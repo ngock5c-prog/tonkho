@@ -426,37 +426,10 @@ function loadFile(){
   reader.onload=function(e){
     try{
       bar.style.width='40%';msg.textContent='Đang phân tích...';
-      const wb=XLSX.read(e.target.result,{type:'array'});
-      const ws=wb.Sheets[wb.SheetNames[0]];
-      const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
-      bar.style.width='60%';
-      let startRow=-1;
-      const KEYS=['KHO BN','KHO BD','北宁仓库','顺安仓库'];
-      for(let i=0;i<rows.length;i++){
-        if(rows[i].slice(0,5).join('|').search(KEYS.join('|'))>=0){startRow=i;break;}
-      }
-      if(startRow<0){msg.style.color='red';msg.textContent='Không tìm thấy dữ liệu kho BN/BD. Hãy kiểm tra lại file.';return;}
       bar.style.width='75%';
-      const tmp={};let curKho='BN';
-      for(let i=startRow;i<rows.length;i++){
-        const r=rows[i];
-        const c1=String(r[1]||'').trim();
-        if(c1.includes('北宁')||c1.includes('KHO BN')){curKho='BN';continue;}
-        if(c1.includes('顺安')||c1.includes('KHO BD')){curKho='BD';continue;}
-        if(c1.includes('合计')||c1.includes('制表'))continue;
-        const ma=String(r[2]||'').trim();
-        if(!ma||ma.length<3)continue;
-        const ten=String(r[3]||'').trim();
-        const dvt=String(r[6]||'').trim();
-        const ton=parseFloat(String(r[9]||0).replace(/[,，\s]/g,''))||0;
-        const kd=parseFloat(String(r[10]||0).replace(/[,，\s]/g,''))||0;
-        if(!tmp[ma])tmp[ma]={ma,ten,dvt,bn:0,bd:0,bn_kd:0,bd_kd:0};
-        if(curKho==='BN'){tmp[ma].bn=Math.round(ton);tmp[ma].bn_kd=Math.round(kd);}
-        else{tmp[ma].bd=Math.round(ton);tmp[ma].bd_kd=Math.round(kd);}
-      }
-      const nd=Object.values(tmp).map(p=>({...p,total:p.bn+p.bd})).filter(p=>p.total>0);
+      const nd=parseExcelBuffer(e.target.result);
       bar.style.width='100%';
-      if(nd.length<5){msg.style.color='red';msg.textContent='Chỉ đọc được '+nd.length+' dòng. Kiểm tra lại file.';return;}
+      if(!nd||nd.length<5){msg.style.color='red';msg.textContent='Chỉ đọc được '+(nd?nd.length:0)+' dòng. Kiểm tra lại file.';return;}
       DATA=nd;initStats();pg=1;go();
       msg.style.color='#1b6a1b';
       msg.textContent='✓ Đã nạp '+nd.length.toLocaleString()+' sản phẩm thành công!';
@@ -473,25 +446,22 @@ function parseExcelBuffer(buf) {
   const wb = XLSX.read(buf, {type:'array'});
   const ws = wb.Sheets[wb.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
-  let startRow = -1;
-  const KEYS = ['KHO BN','KHO BD','北宁仓库','顺安仓库'];
+  const tmp = {};
   for (let i = 0; i < rows.length; i++) {
-    if (rows[i].slice(0,5).join('|').search(KEYS.join('|')) >= 0) { startRow = i; break; }
-  }
-  if (startRow < 0) return null;
-  const tmp = {}; let curKho = 'BN';
-  for (let i = startRow; i < rows.length; i++) {
     const r = rows[i];
     const c1 = String(r[1]||'').trim();
-    if (c1.includes('北宁')||c1.includes('KHO BN')) { curKho='BN'; continue; }
-    if (c1.includes('顺安')||c1.includes('KHO BD')) { curKho='BD'; continue; }
-    if (c1.includes('合计')||c1.includes('制表')) continue;
-    const ma = String(r[2]||'').trim();
+    const ma  = String(r[2]||'').trim();
     if (!ma || ma.length < 3) continue;
+    // Xác định kho từ cột 1 của từng dòng
+    let curKho = null;
+    if (c1.includes('北宁')||c1.includes('KHO BN')) curKho = 'BN';
+    else if (c1.includes('顺安')||c1.includes('KHO BD')) curKho = 'BD';
+    if (!curKho) continue;
     const ten = String(r[3]||'').trim();
     const dvt = String(r[6]||'').trim();
-    const ton = parseFloat(String(r[9]||0).replace(/[,，\s]/g,''))||0;
-    const kd  = parseFloat(String(r[10]||0).replace(/[,，\s]/g,''))||0;
+    // Số tồn có thể là số hoặc chuỗi kiểu "146Cái"
+    const ton = parseFloat(String(r[9]||0).replace(/[^0-9.\-]/g,''))||0;
+    const kd  = parseFloat(String(r[10]||0).replace(/[^0-9.\-]/g,''))||0;
     if (!tmp[ma]) tmp[ma] = {ma,ten,dvt,bn:0,bd:0,bn_kd:0,bd_kd:0};
     if (curKho==='BN') { tmp[ma].bn=Math.round(ton); tmp[ma].bn_kd=Math.round(kd); }
     else               { tmp[ma].bd=Math.round(ton); tmp[ma].bd_kd=Math.round(kd); }
